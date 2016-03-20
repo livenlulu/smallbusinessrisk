@@ -1,13 +1,14 @@
+    
     html, body {
     width: 100%;
     background: #f5f5f3;
     }
 
     h6 {
-      font-size: 22px;
+      font-size: 20px;
       padding-left: 10%;
       font-weight:700;
-      font-family: 'Oswald';
+      font-family: 'Dosis', sans-serif;
 
     }
 
@@ -15,7 +16,7 @@
       font-size: 22px;
       padding-left: 10%;
       font-weight:700;
-      font-family: 'Oswald';
+      font-family: 'Archivo Narrow', sans-serif;
       line-height: 30px;
     }
 
@@ -36,14 +37,14 @@
       background: #f5f5f3;
       padding: 10px;
       border-radius: 10px;
-      font-size: 22px;
+      font-size: 20px;
       position: relative;
       top: 10px;
       width: auto;
       display: inline;
       margin-left: 10px;
       float: left;
-      font-family: 'Oswald';
+      font-family: 'Dosis', sans-serif;
     }
 
     .map {
@@ -88,19 +89,12 @@
     .navbar-default {
       margin-bottom: 0px;
       cursor: pointer;
-
+      font-family: 'Oswald';
     }
     .navbar-default:visited {
       margin-bottom: 0px;
       cursor: pointer;
     }
-
-/*    a.navbar-brand {
-      font-size: 22px;
-      padding-left: 10%;
-      font-weight:700;
-      font-family: 'Oswald';
-    }*/
 
     .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:visited {
       background-color: black;
@@ -111,4 +105,51 @@
     }
 
 
+    .legendGradient {
+    width: 150px;
+    }
 
+    .heatMapBar {
+      height: 6px;
+      background: -webkit-linear-gradient(left,#dc0023,#f74a27,#fbb100,#20c063);
+      border-radius: 1000px;
+    }
+
+    .welcome-options .inner-container {
+    background: #EAEEF1;
+    padding: 50px;
+    display: inline-block;
+    box-shadow: 1px 7px 10px rgba(0,0,0,0.2);
+    }
+
+    .generic-background {
+    border: 1px solid #e6e6e6;
+    }
+
+    .popup-bg {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 0.5;
+    z-index: 2000;
+    position: absolute;
+    top: 0px;
+    }
+
+    #left {
+      background: #f5f5f3;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 20px;
+      position: relative;
+      top: 10px;
+      width: auto;
+      display: inline;
+      margin-left: 10px;
+      float: left;
+      font-family: 'Dosis', sans-serif;
+    }
+
+    .dropdown {
+      padding: 10px;
+    }

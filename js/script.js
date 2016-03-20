@@ -69,7 +69,6 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
              burden > 35  ? '#fbb1b1' :
              burden > 30  ? '#8bbdd7' :
              burden > 25   ? '#538cb8' :
-    
                         '#2878b8';
   }
 
@@ -85,6 +84,16 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
     };
   }
 
+function style2(feature) {
+    return {
+        fillColor: getColor(feature.properties.monthlyrentmedianmonthlyrent),
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '0',
+        fillOpacity: 0.7
+    };
+  }
   //this function is set to run when a user mouses over any polygon
   function mouseoverFunction(e) {
     var layer = e.target;
@@ -169,3 +178,6 @@ legend.addTo(map3);
       onEachFeature: onEachFeature
     }).addTo(map3);
   });
+
+ 
+
