@@ -14,7 +14,8 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
   //now the fun stuff:  leaflet!
   var map3 = L.map('map3').setView( [40.743615, -73.925285], 11);
     map3.addLayer(layer)
-  // //Let's add a marker
+
+   // //Let's add a marker
   // var marker = L.marker([40.768058,-73.981891]).addTo(map);
   // marker.bindPopup("<b>Hello world!</b><br>I am a popup.")
   //Now let's use our custom-made array to make many markers
@@ -65,11 +66,11 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
 
   //this function takes a value and returns a color based on which bucket the value falls between
   function getColor(burden) {
-      return burden > 40 ? '#fb3737' :
-             burden > 35  ? '#fbb1b1' :
-             burden > 30  ? '#8bbdd7' :
-             burden > 25   ? '#538cb8' :
-                        '#2878b8';
+      return burden > 40 ? '#dc0023' :
+             burden > 35  ? '#F97932' :
+             burden > 30  ? '#DDB04B' :
+             burden > 25  ? '#a6d96a' :
+                        '#72BF21';
   }
 
   //this function returns a style object, but dynamically sets fillColor based on the data
@@ -168,6 +169,7 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map3);
+
 
   //all of the helper functions are defined and ready to go, so let's get some data and render it!
 
