@@ -20,6 +20,14 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
   // marker.bindPopup("<b>Hello world!</b><br>I am a popup.")
   //Now let's use our custom-made array to make many markers
 
+
+  // $(".dropBox").select(function() {
+  //     if($(this).attr('id') == 'afs' ) {
+  //      map3.panTo(manhattan, panOptions);
+
+
+
+
   var panOptions = {
     animate: true,
     duration: 2
@@ -73,6 +81,25 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
                         '#72BF21';
   }
 
+  var legend = L.control({position: 'bottomright'});
+  legend.onAdd = function (map) {
+
+      var div = L.DomUtil.create('div', 'info legend'),
+          grades = [0, 25, 30, 35, 40],
+          labels = [];
+
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '%' + '<br>' : '+');
+      }
+      return div;
+  };
+
+  legend.addTo(map3);
+
+
   //this function returns a style object, but dynamically sets fillColor based on the data
   function style(feature) {
     return {
@@ -85,16 +112,16 @@ var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
     };
   }
 
-function style2(feature) {
-    return {
-        fillColor: getColor(feature.properties.monthlyrentmedianmonthlyrent),
-        weight: 1,
-        opacity: 1,
-        color: 'white',
-        dashArray: '0',
-        fillOpacity: 0.7
-    };
-  }
+  // function style2(feature) {
+  //   return {
+  //       fillColor: getColor(feature.properties.monthlyrentmedianmonthlyrent),
+  //       weight: 1,
+  //       opacity: 1,
+  //       color: 'white',
+  //       dashArray: '0',
+  //       fillOpacity: 0.7
+  //   };
+  // }
   //this function is set to run when a user mouses over any polygon
   function mouseoverFunction(e) {
     var layer = e.target;
@@ -118,23 +145,6 @@ function style2(feature) {
     $('#infoWindow').html(layer.feature.properties.rbLocation + '<br>' + '<h3>'+ layer.feature.properties.rbpercent + '%' + '<br>' + '</h3>' + '<br>'  + 'Median Monthly Rent: ' + '<br>' + '<h3>' +'$' +layer.feature.properties.monthlyrentmedianmonthlyrent + '</h3>'); 
   }
 
-  // var info = L.control();
-
-  //   info.onAdd = function (map) {
-  //       this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-  //       this.update();
-  //       return this._div;
-  //   };
-
-  //   // method that we will use to update the control based on feature properties passed
-  //   info.update = function (props) {
-  //       this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-  //           '<b>' + props.name + '</b><br />' + props.rbpercent+ ' people / mi<sup>2</sup>'
-  //           : 'Hover over a state');
-  //   };
-
-  //   info.addTo(map3);
-
   //this runs on mouseout
   function resetHighlight(e) {
     geojson.resetStyle(e.target);
@@ -148,28 +158,6 @@ function style2(feature) {
         //click: zoomToFeature
     });
   }
-
-
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 25, 30, 35, 40],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '%' + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(map3);
-
 
   //all of the helper functions are defined and ready to go, so let's get some data and render it!
 
